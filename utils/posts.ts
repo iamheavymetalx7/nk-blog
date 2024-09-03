@@ -16,4 +16,6 @@ export interface Post {
   publishedAt: string;
   slug: string;
   title: string;
+  readTimeInMinutes: string;
+  url: string;
 }
