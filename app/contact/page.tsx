@@ -5,9 +5,9 @@ import Link from "next/link";
 
 function ContactPage() {
   return (
-    <div className="text-gray-600">
+    <div>
       <h1 className="font-bold text-3xl">📮 Contact Me</h1>
-      <div className="italic text-zinc-500 mb-4 mt-6 flex flex-row justify-between text-lg">
+      <div className="italic mb-4 mt-6 flex flex-row justify-between text-lg">
         <p>
           Subscribe to{" "}
           <Link href="https://hashnode.com/@nov1ce" className="text-blue-400">
