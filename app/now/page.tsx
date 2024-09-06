@@ -1,6 +1,6 @@
 import React from "react";
 import NowContent from "./NowContent";
-import DashedComponent from "../DashedComponent";
+import DashedComponent from "../../components/DashedComponent";
 import Link from "next/link";
 
 function NowPage() {

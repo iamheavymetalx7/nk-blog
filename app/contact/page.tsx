@@ -1,5 +1,5 @@
 import React from "react";
-import DashedComponent from "../DashedComponent";
+import DashedComponent from "../../components/DashedComponent";
 import { socialLinks } from "@/utils/socials";
 import Link from "next/link";
 

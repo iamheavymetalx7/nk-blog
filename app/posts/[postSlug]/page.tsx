@@ -5,8 +5,7 @@ import type { Post } from "@/utils/posts";
 import Container from "@/components/Container";
 import { FaBookOpen } from "react-icons/fa";
 import Link from "next/link";
-import DashedComponent from "@/app/DashedComponent";
-
+import DashedComponent from "@/components/DashedComponent";
 interface PostParams {
   params: { postSlug: string };
 }
@@ -49,18 +48,18 @@ export default async function Post({ params }: PostParams) {
 
   const post = publication?.post as Post;
   post.content.html = `<div class="prose prose-lg max-w-none">
-  <p class="text-gray-700">
-    In the world of web development, understanding where API calls originate from can be crucial for a variety of reasons, from analytics to security. Have you ever wondered how to document the origin of an API call within your Next.js project? If you're working with multiple pages or links that trigger the same API endpoint, Next.js provides a straightforward way to capture this information using the built-in <code class="bg-gray-100 text-red-500 rounded px-1">headers</code> utility.
+  <p class="text-lg">
+    In the world of web development, understanding where API calls originate from can be crucial for a variety of reasons, from analytics to security. Have you ever wondered how to document the origin of an API call within your Next.js project? If you're working with multiple pages or links that trigger the same API endpoint, Next.js provides a straightforward way to capture this information using the built-in <code class="bg-gray-100  text-blue-700 rounded px-1">headers</code> utility.
   </p>
 
-  <h3 id="heading-understanding-the-headers-utility-in-nextjs" class="mt-4 mb-2 text-2xl font-bold text-gray-900">
-    Understanding the <code class="bg-gray-100 text-red-500 rounded px-1">Headers</code> Utility in Next.js
+  <h3 id="heading-understanding-the-headers-utility-in-nextjs" class="mt-4 mb-2 text-2xl font-bold">
+    Understanding the <code class="bg-gray-100 text-blue-700 rounded px-1">Headers</code> Utility in Next.js
   </h3>
-  <p class="text-gray-700">
-    Next.js offers a <code class="bg-gray-100 text-red-500 rounded px-1">headers</code> function that allows developers to read incoming HTTP request headers within a Server Component. This function is particularly useful because it provides access to the <code class="bg-gray-100 text-red-500 rounded px-1">Referer</code> header, which indicates the origin of the request.
+  <p class="text-lg">
+    Next.js offers a <code class="bg-gray-100 text-blue-700 rounded px-1">headers</code> function that allows developers to read incoming HTTP request headers within a Server Component. This function is particularly useful because it provides access to the <code class="bg-gray-100  text-blue-700 rounded px-1">Referer</code> header, which indicates the origin of the request.
   </p>
 
-  <pre class="bg-gray-500 rounded-lg overflow-x-auto text-white mt-2 mb-2">
+  <pre class="bg-gray-700 text-lg rounded-lg overflow-x-auto text-white mt-2 mb-2">
     <code class="lang-javascript">
       <span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">POST</span>(<span class="hljs-params">req: NextRequest</span>) </span>{
         <span class="hljs-keyword">const</span> headersList = headers();
@@ -75,18 +74,18 @@ export default async function Post({ params }: PostParams) {
     </code>
   </pre>
 
-  <p class="text-gray-700">
-    In this code snippet, the <code class="bg-gray-100 text-red-500 rounded px-1">headers</code> function fetches all the incoming request headers, and by accessing the <code class="bg-gray-100 text-red-500 rounded px-1">referer</code> header, you can determine the URL of the page that initiated the API request.
+  <p class="text-lg">
+    In this code snippet, the <code class="bg-gray-100  text-blue-700 rounded px-1">headers</code> function fetches all the incoming request headers, and by accessing the <code class="bg-gray-100  text-blue-700 rounded px-1">referer</code> header, you can determine the URL of the page that initiated the API request.
   </p>
 
-  <h3 id="heading-practical-applications-of-the-referer-header" class="mt-4 mb-2 text-2xl font-bold text-gray-900">
-    Practical Applications of the <code class="bg-gray-100 text-red-500 rounded px-1">Referer</code> Header
+  <h3 id="heading-practical-applications-of-the-referer-header" class="mt-4 mb-2 text-2xl font-bold">
+    Practical Applications of the <code class="bg-gray-100  text-blue-700 rounded px-1">Referer</code> Header
   </h3>
 
-  <ul class="list-disc ml-6 space-y-2 text-gray-700">
-    <li><strong>Tracking Referrals</strong>: You can use the <code class="bg-gray-100 text-red-500 rounded px-1">referer</code> header to track where requests are coming from, which can help with analytics or understanding user behavior.</li>
-    <li><strong>Security</strong>: Checking the <code class="bg-gray-100 text-red-500 rounded px-1">referer</code> header can be useful for validating that requests are coming from expected sources, which can help in implementing security measures.</li>
-    <li><strong>Custom Logic Based on Referrer</strong>: Depending on the value of the <code class="bg-gray-100 text-red-500 rounded px-1">referer</code> header, you can apply different logic or handle requests differently based on the origin of the request.</li>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong>Tracking Referrals</strong>: You can use the <code class="bg-gray-100  text-blue-700 rounded px-1">referer</code> header to track where requests are coming from, which can help with analytics or understanding user behavior.</li>
+    <li><strong>Security</strong>: Checking the <code class="bg-gray-100  text-blue-700 rounded px-1">referer</code> header can be useful for validating that requests are coming from expected sources, which can help in implementing security measures.</li>
+    <li><strong>Custom Logic Based on Referrer</strong>: Depending on the value of the <code class="bg-gray-100  text-blue-700 rounded px-1">referer</code> header, you can apply different logic or handle requests differently based on the origin of the request.</li>
     <li><strong>Debugging</strong>: Knowing the referrer can help you debug issues by providing context about where requests are originating from.</li>
   </ul>
 
@@ -96,16 +95,16 @@ export default async function Post({ params }: PostParams) {
         💡
       </div>
       <div class="ml-3 text-blue-700">
-        Keep in mind that the <code class="bg-gray-100 text-red-500 rounded px-1">referer</code> header can be modified or suppressed for privacy reasons or security policies, so it might not always be available.
+        Keep in mind that the <code class="bg-gray-100  text-blue-700 rounded px-1">referer</code> header can be modified or suppressed for privacy reasons or security policies, so it might not always be available.
       </div>
     </div>
   </div>
 
-  <h3 id="heading-conclusion" class="mt-4 mb-2 text-2xl font-bold text-gray-900">
+  <h3 id="heading-conclusion" class="mt-4 mb-2 text-2xl font-bold">
     Conclusion
   </h3>
-  <p class="text-gray-700">
-    Incorporating the <code class="bg-gray-100 text-red-500 rounded px-1">referer</code> header into your Next.js project can greatly enhance your ability to track, secure, and debug your application’s API calls. Whether you're aiming to better understand user behavior, tighten security, or streamline debugging processes, this built-in feature is a valuable asset. Just keep in mind the potential limitations and use it as part of a broader strategy.
+  <p class="text-lg">
+    Incorporating the <code class="bg-gray-100  text-blue-700 rounded px-1">referer</code> header into your Next.js project can greatly enhance your ability to track, secure, and debug your application’s API calls. Whether you're aiming to better understand user behavior, tighten security, or streamline debugging processes, this built-in feature is a valuable asset. Just keep in mind the potential limitations and use it as part of a broader strategy.
   </p>
 </div>
 `;
@@ -165,7 +164,7 @@ export default async function Post({ params }: PostParams) {
           />
         </article>
         <DashedComponent></DashedComponent>
-        <p className="text-gray-700">
+        <p className="text-lg">
           <em>
             Read the original blog{" "}
             <Link className=" hover:text-blue-400 underline" href={post.url}>

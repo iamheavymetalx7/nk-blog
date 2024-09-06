@@ -19,7 +19,7 @@ import { query } from "@/lib/hasnode";
 import Link from "next/link";
 import { Post } from "@/utils/posts";
 import LoadingCards from "./loading";
-import DashedComponent from "../DashedComponent";
+import DashedComponent from "../../components/DashedComponent";
 
 export default async function PageComponent() {
   const {

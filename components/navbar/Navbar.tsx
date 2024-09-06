@@ -8,9 +8,7 @@ export function Navbar() {
       <nav>
         <div className="container flex flex-row  justify-between text-lg">
           <NavTopics />
-          {/* <div className="items-center">
-            <DarkMode />
-          </div> */}
+          <div className="items-center">{/* <DarkMode /> */}</div>
         </div>
       </nav>
     </>
