@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const jsonFilePath = path.join(process.cwd(), "data.json");
-
+console.log(jsonFilePath);
 export async function readJSONFile() {
   try {
     if (fs.existsSync(jsonFilePath)) {
