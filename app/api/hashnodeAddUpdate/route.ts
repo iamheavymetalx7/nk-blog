@@ -5,13 +5,13 @@ import { readJSONFile, writeJSONFile } from "@/lib/handleIncomingUpdates";
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
-    console.log("Webhook payload:", payload);
+    // console.log("Webhook payload:", payload);
 
     const postId = payload.data.post.id;
-    console.log("Post ID:", postId);
+    // console.log("Post ID:", postId);
 
     let data = await readJSONFile();
-    console.log("Current data in JSON file:", data);
+    // console.log("Current data in JSON file:", data);
 
     const response = await query({
       query: `
@@ -41,11 +41,11 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    console.log("GraphQL response:", response);
+    // console.log("GraphQL response:", response);
 
     // Correctly extract post from response.data
     const post = response.data.post;
-    console.log("Post data:", post);
+    // console.log("Post data:", post);
 
     data[postId] = post;
     console.log("Writing data to JSON file...");

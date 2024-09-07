@@ -18,5 +18,53 @@
     "content": {
       "html": "<p>This is a demo blog and I am checking what happens when we do not have a TIL tag in this, but some other random tag.</p>\n<p>This is updating for checking webhook.</p>\n<p>Again updating - updating again</p>\n"
     }
+  },
+  "66d487b71024b4740ce475bc": {
+    "id": "66d487b71024b4740ce475bc",
+    "publishedAt": "2024-08-13T18:30:00.000Z",
+    "title": "Using the `Referer` Header in Next.js",
+    "readTimeInMinutes": 2,
+    "url": "https://nov1ce.hashnode.dev/using-the-referer-header-in-nextjs-track-and-understand-api-calls",
+    "slug": "using-the-referer-header-in-nextjs-track-and-understand-api-calls",
+    "author": {
+      "name": "Nitish Kumar"
+    },
+    "tags": [
+      {
+        "name": "Next.js",
+        "slug": "nextjs"
+      },
+      {
+        "name": "JavaScript",
+        "slug": "javascript"
+      },
+      {
+        "name": "TIL",
+        "slug": "til"
+      }
+    ],
+    "content": {
+      "html": "<p>In the world of web development, understanding where API calls originate from can be crucial for a variety of reasons, from analytics to security. Have you ever wondered how to document the origin of an API call within your Next.js project? If you're working with multiple pages or links that trigger the same API endpoint, Next.js provides a straightforward way to capture this information using the built-in <code>headers</code> utility.</p>\n<h3 id=\"heading-understanding-the-headers-utility-in-nextjs\">Understanding the <code>Headers</code> Utility in Next.js</h3>\n<p>Next.js offers a <code>headers</code> function that allows developers to read incoming HTTP request headers within a Server Component. This function is particularly useful because it provides access to the <code>Referer</code> header, which indicates the origin of the request.</p>\n<pre><code class=\"lang-javascript\"><span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">async</span> <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">POST</span>(<span class=\"hljs-params\">req: NextRequest</span>) </span>{\n  <span class=\"hljs-keyword\">const</span> headersList = headers();\n  <span class=\"hljs-keyword\">const</span> referer = headersList.get(<span class=\"hljs-string\">'referer'</span>);}\n\n<span class=\"hljs-comment\">//If the request came from another page within the same site:</span>\n<span class=\"hljs-comment\">//http://example.com/some-page</span>\n\n<span class=\"hljs-comment\">//If the request came from an external site:</span>\n<span class=\"hljs-comment\">//https://external-site.com/page</span>\n</code></pre>\n<p>In this code snippet, the <code>headers</code> function fetches all the incoming request headers, and by accessing the <code>referer</code> header, you can determine the URL of the page that initiated the API request.</p>\n<h3 id=\"heading-practical-applications-of-the-referer-header\">Practical Applications of the <code>Referer</code> Header</h3>\n<ul>\n<li><p><strong>Tracking Referrals</strong>: You can use the <code>referer</code> header to track where requests are coming from, which can help with analytics or understanding user behavior.</p>\n</li>\n<li><p><strong>Security</strong>: Checking the <code>referer</code> header can be useful for validating that requests are coming from expected sources, which can help in implementing security measures.</p>\n</li>\n<li><p><strong>Custom Logic Based on Referrer</strong>: Depending on the value of the <code>referer</code> header, you can apply different logic or handle requests differently based on the origin of the request.</p>\n</li>\n<li><p><strong>Debugging</strong>: Knowing the referrer can help you debug issues by providing context about where requests are originating from.</p>\n</li>\n</ul>\n<p>Keep in mind that the <code>referer</code> header can be modified or suppressed for privacy reasons or security policies, so it might not always be available.</p>\n<h3 id=\"heading-conclusion\">Conclusion</h3>\n<p>Incorporating the <code>referer</code> header into your Next.js project can greatly enhance your ability to track, secure, and debug your application’s API calls. Whether you're aiming to better understand user behavior, tighten security, or streamline debugging processes, this built-in feature is a valuable asset. Just keep in mind the potential limitations and use it as part of a broader strategy.</p>\n"
+    }
+  },
+  "66dc05ba929208d309487dff": {
+    "id": "66dc05ba929208d309487dff",
+    "publishedAt": "2024-08-02T18:30:00.000Z",
+    "title": "TIL Blog",
+    "readTimeInMinutes": 2,
+    "url": "https://nov1ce.hashnode.dev/til-blog",
+    "slug": "til-blog",
+    "author": {
+      "name": "Nitish Kumar"
+    },
+    "tags": [
+      {
+        "name": "TIL",
+        "slug": "til"
+      }
+    ],
+    "content": {
+      "html": "<p>I have plans to expand the content here, though it may take some time for everything to take shape. I’ll begin by documenting my experience of learning JavaScript, transitioning to React, and eventually moving on to Next.js. During this journey, I built a Next.js Airbnb clone with the help of a Udemy course. I encountered several challenges, particularly with connection timeouts due to misaligned server locations—my Vercel deployment was on a North American server, while my Supabase PostgreSQL server was in East Asia. This real-world issue, which cost me nearly two days of troubleshooting, will be something I write about as well.</p>\n<p>Additionally, I've gained knowledge about webhooks, API calls, and message queues. While this may not seem extensive to someone with a CS background, my journey is a bit different. With a major in Mathematics (BS-MS Dual Degree), I made the decision to switch to the tech domain, focusing on data science and machine learning. I improved my coding skills by practicing on platforms like Leetcode and Codeforces, and I intend to share my thoughts on how I realized that my passion lies not in abstract mathematics but in practical problem-solving.</p>\n<p>I’ll likely rename this page to something more encompassing, where I can document both my past \"Today I Learned\" experiences and future learnings. Though I’m just starting out in the software domain, I’m eager to learn and grow.</p>\n<p>At present, the Posts and TIL content may overlap, but I plan to organize them better as I continue developing this platform. Starting somewhere is better than not starting at all, which is why I decided to launch this site—whether it serves as a blog, a portfolio, or something else, I’m still figuring that out.</p>\n<p>Over time, I intend to refine and define this portfolio, continuing to build on it as and when I have the opportunity.</p>\n"
+    }
   }
 }

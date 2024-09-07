@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   try {
     // Process the webhook payload
     const payload = await req.json();
-    console.log("Webhook payload:", payload);
+    // console.log("Webhook payload:", payload);
 
     // Fetch post ID and event type from the webhook payload
     const postId = payload.data.post.id;
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
     // Read existing data from JSON file
     let data = await readJSONFile();
-    console.log("Current data in JSON file:", data);
+    // console.log("Current data in JSON file:", data);
 
     if (eventType === "post_deleted") {
       // Check if the post ID exists in the data
