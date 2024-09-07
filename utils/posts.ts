@@ -7,6 +7,7 @@ export interface Post {
     };
   };
   content: {
+    markdown: string;
     html: string;
   };
   coverImage: {

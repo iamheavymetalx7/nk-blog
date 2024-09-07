@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "utils"
+    "utils",
+    "lib/convertHTML.js"
   ],
   "exclude": ["node_modules"]
 }
