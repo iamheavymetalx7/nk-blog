@@ -21,12 +21,10 @@ export default async function Post({ params }: PostParams) {
             post(slug: $slug) {
               author {
                 name
-
               }
               content {
                 html
               }
- 
               tags {
                 name
               }
@@ -46,10 +44,8 @@ export default async function Post({ params }: PostParams) {
     });
 
     const post = publication?.post as Post;
-    console.log(post.content.html);
-    // Filter posts where tag is "TIL"
 
-    // Convert Markdown content to HTML if needed
+    // Convert HTML content using beautifyHtml
     const htmlContent = await beautifyHtml(post.content.html);
 
     return (
@@ -86,14 +82,20 @@ export default async function Post({ params }: PostParams) {
 
           <div className="mt-6 items-center">
             <ul className="flex flex-wrap gap-2 mt-2 items-center">
-              {post.tags.map((tag) => (
-                <li
-                  key={tag.id}
-                  className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
-                >
-                  {tag.name}
+              {Array.isArray(post.tags) ? (
+                post.tags.map((tag, index) => (
+                  <li
+                    key={index}
+                    className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
+                  >
+                    {tag.name}
+                  </li>
+                ))
+              ) : (
+                <li className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg">
+                  {post.tags.name}
                 </li>
-              ))}
+              )}
             </ul>
           </div>
         </article>

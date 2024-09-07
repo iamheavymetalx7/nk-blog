@@ -9,7 +9,6 @@ import beautifyHtml from "@/lib/convertHTML";
 interface PostParams {
   params: { postSlug: string };
 }
-
 export default async function Post({ params }: PostParams) {
   try {
     const {
@@ -90,14 +89,23 @@ export default async function Post({ params }: PostParams) {
 
           <div className="mt-6 items-center">
             <ul className="flex flex-wrap gap-2 mt-2 items-center">
-              {post.tags.map((tag) => (
+              {Array.isArray(post.tags) ? (
+                post.tags.map((tag, index) => (
+                  <li
+                    key={index} // Using index as key if tag doesn't have an id
+                    className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
+                  >
+                    {tag.name}
+                  </li>
+                ))
+              ) : (
                 <li
-                  key={tag.id}
+                  key={post.tags.name}
                   className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
                 >
-                  {tag.name}
+                  {post.tags.name}
                 </li>
-              ))}
+              )}
             </ul>
           </div>
         </article>

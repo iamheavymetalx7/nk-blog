@@ -5,40 +5,53 @@ import { Post } from "@/utils/posts";
 import LoadingCards from "./loading";
 import DashedComponent from "../../components/DashedComponent";
 
-export default async function PageComponent() {
-  const {
-    data: { publication },
-  } = await query({
-    query: `
-      query($host: String!) {
-        publication(host: $host) {
-          posts(first: 20) {
-            edges {
-              node {
-                id
-                publishedAt
-                url
-                slug
-                title
-                tags {
-                  name
+async function fetchPosts() {
+  try {
+    const {
+      data: { publication },
+    } = await query({
+      query: `
+        query($host: String!) {
+          publication(host: $host) {
+            posts(first: 20) {
+              edges {
+                node {
+                  id
+                  publishedAt
+                  url
+                  slug
+                  title
+                  tags {
+                    name
+                  }
                 }
               }
             }
           }
         }
-      }
-    `,
-    variables: {
-      host: "nov1ce.hashnode.dev",
-    },
-  });
-  console.log(publication);
-  // Filter posts to include only those with "TIL" tag
-  const posts: Array<Post> = publication.posts.edges
-    .map(({ node }: { node: Post }) => node)
-    .filter((post) => post.tags.some((tag) => tag.name === "TIL"));
-  console.log(posts);
+      `,
+      variables: {
+        host: "nov1ce.hashnode.dev",
+      },
+    });
+
+    // Filter posts to include only those with the "TIL" tag
+    return publication.posts.edges
+      .map(({ node }: { node: Post }) => node)
+      .filter(
+        (post: any) =>
+          Array.isArray(post.tags) &&
+          post.tags.some((tag: any) => tag.name === "TIL")
+      );
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+}
+
+export default async function PageComponent() {
+  const posts = await fetchPosts();
+
   return (
     <>
       <h1 className="text-3xl font-bold">📋 Posts</h1>
@@ -57,7 +70,7 @@ export default async function PageComponent() {
             {posts.length === 0 ? (
               <li>No posts with the "TIL" tag found.</li>
             ) : (
-              posts.map((post) => (
+              posts.map((post: any) => (
                 <li key={post.id}>
                   <div className="flex flex-row gap-6">
                     <p>
@@ -73,9 +86,6 @@ export default async function PageComponent() {
                     >
                       {post.title}
                     </Link>
-                    <div className="flex flex-row gap-4">
-                      {/* Additional links or actions can be added here */}
-                    </div>
                   </div>
                 </li>
               ))
