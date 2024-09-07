@@ -1,19 +1,3 @@
-// import React from "react";
-// import DashedComponent from "../DashedComponent";
-
-// function PostsPage() {
-//   return (
-//     <div>
-//       <h1 className="font-bold text-3xl">📋 Posts</h1>
-//       <DashedComponent />
-//     </div>
-//   );
-// }
-
-// export default PostsPage;
-
-// pages/index.js
-
 import { Suspense } from "react";
 import { query } from "@/lib/hasnode";
 import Link from "next/link";
@@ -31,14 +15,14 @@ export default async function PageComponent() {
           posts(first: 20) {
             edges {
               node {
-                coverImage {
-                  url
-                }
                 id
                 publishedAt
                 url
                 slug
                 title
+                tags {
+                  name
+                }
               }
             }
           }
@@ -49,11 +33,12 @@ export default async function PageComponent() {
       host: "nov1ce.hashnode.dev",
     },
   });
-
-  const posts: Array<Post> = publication.posts.edges.map(
-    ({ node }: { node: Post }) => node
-  );
-
+  console.log(publication);
+  // Filter posts to include only those with "TIL" tag
+  const posts: Array<Post> = publication.posts.edges
+    .map(({ node }: { node: Post }) => node)
+    .filter((post) => post.tags.some((tag) => tag.name === "TIL"));
+  console.log(posts);
   return (
     <>
       <h1 className="text-3xl font-bold">📋 Posts</h1>
@@ -69,42 +54,32 @@ export default async function PageComponent() {
       <Suspense fallback={<LoadingCards />}>
         <div className="text-lg">
           <ul>
-            {posts.map((post) => {
-              return (
+            {posts.length === 0 ? (
+              <li>No posts with the "TIL" tag found.</li>
+            ) : (
+              posts.map((post) => (
                 <li key={post.id}>
                   <div className="flex flex-row gap-6">
                     <p>
                       {new Date(post.publishedAt).toLocaleDateString("en-us", {
                         year: "numeric",
                         month: "short",
-                        day: "numeric",
+                        day: "2-digit",
                       })}
                     </p>
                     <Link
-                      // href={post.url}
                       href={`/posts/${post.slug}`}
                       className="text-blue-400 hover:underline"
                     >
                       {post.title}
                     </Link>
                     <div className="flex flex-row gap-4">
-                      {/* <Link
-                    href={`/posts/${post.slug}`}
-                    className="text-blue-400 hover:underline"
-                  >
-                    Dynamic Route
-                  </Link>
-                  <Link
-                    href={post.url}
-                    className="text-blue-400 hover:underline"
-                  >
-                    Hashnode
-                  </Link> */}
+                      {/* Additional links or actions can be added here */}
                     </div>
                   </div>
                 </li>
-              );
-            })}
+              ))
+            )}
           </ul>
         </div>
       </Suspense>

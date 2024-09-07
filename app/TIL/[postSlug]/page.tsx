@@ -21,18 +21,12 @@ export default async function Post({ params }: PostParams) {
             post(slug: $slug) {
               author {
                 name
-                profilePicture
-                socialMediaLinks {
-                  twitter
-                }
+
               }
               content {
-                markdown
                 html
               }
-              coverImage {
-                url
-              }
+ 
               tags {
                 name
               }
@@ -52,6 +46,8 @@ export default async function Post({ params }: PostParams) {
     });
 
     const post = publication?.post as Post;
+    console.log(post.content.html);
+    // Filter posts where tag is "TIL"
 
     // Convert Markdown content to HTML if needed
     const htmlContent = await beautifyHtml(post.content.html);

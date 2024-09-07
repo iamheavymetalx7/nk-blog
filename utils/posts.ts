@@ -13,6 +13,9 @@ export interface Post {
   coverImage: {
     url: string;
   };
+  tags: {
+    name: string;
+  };
   id: string;
   publishedAt: string;
   slug: string;
