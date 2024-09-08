@@ -81,7 +81,7 @@ export default async function Post({ params }: PostParams) {
           <DashedComponent />
 
           <div
-            className="prose-lg prose-headings:text-blue-500 prose-h3:mt-8 prose-h3:mb-4 prose-h3:font-semibold prose-p:mt-2 prose-p:mb-2 prose-strong:text-blue-500 prose-code:bg-black-800 prose-code:rounded prose-code:font-medium prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg prose-pre:shadow-lg prose-ul:pl-6 prose-li:mb-2 prose-li:list-disc prose-callout:bg-blue-300 prose-callout:border-l-4 prose-callout:border-blue-500 prose-callout:p-2 prose-callout:rounded-lg"
+            className="prose-lg prose-headings:text-blue-500 prose-h3:mt-8 prose-h3:mb-4 prose-h3:font-semibold prose-p:mt-2 prose-p:mb-2 prose-strong:text-blue-500 prose-code:bg-black-800 prose-code:rounded prose-code:font-medium prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg prose-pre:shadow-lg prose-ul:pl-6 prose-li:mb-2 prose-li:list-disc prose-callout:bg-blue-300 prose-callout:border-l-4 prose-callout:border-blue-500 prose-callout:p-2 prose-callout:rounded-lg prose-img:rounded-lg prose-img:shadow-md prose-img:my-4 prose-img:mx-auto prose-img:w-3/4 prose-img:max-w-sm"
             dangerouslySetInnerHTML={{
               __html: htmlContent || post.content.html,
             }}
