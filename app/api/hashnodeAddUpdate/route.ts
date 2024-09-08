@@ -20,18 +20,11 @@ export async function POST(req: NextRequest) {
             id
             publishedAt
             title
-            readTimeInMinutes
             url            
             slug
-            author {
-              name
-            }
+
             tags {
               name
-              slug
-            }
-            content {
-              html
             }
           }
         }

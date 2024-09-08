@@ -45,9 +45,6 @@ async function fetchPosts() {
           post.tags.some((tag: any) => tag.name === "TIL")
       );
     console.log(filteredPosts);
-    filteredPosts.forEach((post: any) => {
-      console.log(post.tags, "=====>");
-    });
     return filteredPosts;
   } catch (error) {
     console.error("Error fetching posts:", error);
@@ -56,6 +53,7 @@ async function fetchPosts() {
 }
 
 export default async function PageComponent() {
+  // Fetch posts dynamically on each request
   const posts = await fetchPosts();
   console.log(posts);
 
