@@ -15,6 +15,8 @@ export async function POST(req: NextRequest) {
     console.log(postId, eventType);
     revalidatePath("/posts");
     revalidatePath("/TIL");
+    //upd: returned a response - earlier code had this missing
+    return NextResponse.json({ message: "Update received and post deleted" });
   } catch (error) {
     console.error("Error handling webhook:", error);
     return NextResponse.json(
