@@ -1,6 +1,6 @@
+"use server";
 import { NextRequest, NextResponse } from "next/server";
-import { query } from "@/lib/hasnode"; // Adjust the import path
-import { readJSONFile, writeJSONFile } from "@/lib/handleIncomingUpdates";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,40 +10,8 @@ export async function POST(req: NextRequest) {
     const postId = payload.data.post.id;
     // console.log("Post ID:", postId);
 
-    let data = await readJSONFile();
-    // console.log("Current data in JSON file:", data);
-
-    const response = await query({
-      query: `
-        query($id: ID!) {
-          post(id: $id) {
-            id
-            publishedAt
-            title
-            url            
-            slug
-
-            tags {
-              name
-            }
-          }
-        }
-      `,
-      variables: {
-        id: postId,
-      },
-    });
-
-    // console.log("GraphQL response:", response);
-
-    // Correctly extract post from response.data
-    const post = response.data.post;
-    // console.log("Post data:", post);
-
-    data[postId] = post;
-    console.log("Writing data to JSON file...");
-    await writeJSONFile(data);
-    console.log("Data written successfully.");
+    revalidatePath("/posts");
+    revalidatePath("/TIL");
 
     return NextResponse.json({ message: "Webhook received and data updated" });
   } catch (error) {

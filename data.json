@@ -58,5 +58,24 @@
     "content": {
       "html": "<p>In this blog post, I'll summarize the key concepts and techniques I learned while working on my \"Today I Learned\" (TIL) episode. This includes dynamic content fetching with Next.js, handling webhooks, and utilizing Ngrok for local development.</p>\n<h3 id=\"heading-dynamic-blog-fetching-with-nextjs\">Dynamic Blog Fetching with Next.js</h3>\n<p>Previously, I fetched blog posts manually, but I wanted to automate this process. To achieve dynamic content fetching, I used Next.js server-side fetching. Here’s a step-by-step breakdown:</p>\n<p><strong>Fetching Blog Data</strong>:</p>\n<ul>\n<li><p>I leveraged the Hashnode API with GraphQL to fetch blog details such as title, slug, and tags.</p>\n</li>\n<li><p>The data is then displayed on the TIL and Posts pages. Currently, I’m working on reordering the content to improve the user experience.</p>\n</li>\n</ul>\n<h3 id=\"heading-using-webhooks-for-real-time-updates\">Using Webhooks for Real-Time Updates</h3>\n<p>Webhooks are an excellent way to keep your data updated in real time. Here’s how I implemented them:</p>\n<ol>\n<li><p><strong>Webhook Implementation</strong>:</p>\n<ul>\n<li><p>When an update occurs (like a new blog post), Hashnode triggers a webhook that hits an endpoint in my Next.js application.</p>\n</li>\n<li><p>This endpoint updates a <code>data.json</code> file, which is used to fetch and display posts on the TIL and Posts pages based on their tags.</p>\n</li>\n</ul>\n</li>\n<li><p><strong>Testing with Ngrok</strong>:</p>\n<ul>\n<li><p>To test the webhook integration, I used Ngrok. Ngrok allows you to expose your local server to the internet, making it easy to test webhooks.</p>\n</li>\n<li><p>After setting up Ngrok, I used Postman to send requests to my local server and verify that the webhook updates were processed correctly.</p>\n</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"https://cdn.hashnode.com/res/hashnode/image/upload/v1725737187350/f38852af-a2e5-4f67-82b1-d53330450b09.png\" alt class=\"image--center mx-auto\" /></p>\n<p><img src=\"https://cdn.hashnode.com/res/hashnode/image/upload/v1725737071710/0ab14e9c-d24e-4ab3-91b4-975bd582f38c.png\" alt class=\"image--center mx-auto\" /></p>\n<p><img src=\"https://cdn.hashnode.com/res/hashnode/image/upload/v1725737077401/83e5a12d-2bb1-4ce9-997f-74cea0036ed4.png\" alt class=\"image--center mx-auto\" /></p>\n<p><img src=\"https://cdn.hashnode.com/res/hashnode/image/upload/v1725737208250/798aa390-b8e2-4305-abe0-69724dd64b03.png\" alt class=\"image--center mx-auto\" /></p>\n<h3 id=\"heading-fetching-data-in-nextjs\">Fetching Data in Next.js</h3>\n<p>In Next.js, there are different methods to fetch data based on your needs:</p>\n<ol>\n<li><p><strong>Using</strong> <code>async/await</code>:</p>\n<ul>\n<li>This method is useful for data fetching in client-side code or when you need to handle asynchronous operations directly in your component.</li>\n</ul>\n</li>\n<li><p><strong>Using</strong> <code>getServerSideProps()</code>:</p>\n<ul>\n<li>This method fetches data server-side on each request, making it ideal for dynamic content that changes frequently or depends on request data.</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-nextjs-api-routes\">Next.js API Routes</h3>\n<p>In Next.js 13+, API routes are defined within the <code>app/api/{folderName}/route.ts</code> file. Unlike previous versions, you must explicitly define the request type (GET, POST, DELETE) within the <code>export default function</code> in the <code>route.ts</code> file.</p>\n<h3 id=\"heading-future-plans\">Future Plans</h3>\n<p>I’m planning to integrate a database, likely PostgreSQL with Supabase, to manage and store blog data. I will also use webhooks to keep the database updated with new posts, modifications, or deletions.</p>\n"
     }
+  },
+  "66dd4f37d537b2b5076d147d": null,
+  "66dd503fd537b2b5076d1483": null,
+  "66dd5111d537b2b5076d1485": null,
+  "66dd5111d537b2b5076d1486": null,
+  "66dd56005c1a1599af5c8b1c": {
+    "id": "66dd56005c1a1599af5c8b1c",
+    "publishedAt": "2024-09-08T07:45:04.106Z",
+    "title": "Enhancing Your VS Code Experience: Essential Extensions for Productivity",
+    "url": "https://nov1ce.hashnode.dev/vs-code-extensions",
+    "slug": "vs-code-extensions",
+    "tags": [
+      {
+        "name": "Visual Studio Code"
+      },
+      {
+        "name": "Productivity"
+      }
+    ]
   }
 }
