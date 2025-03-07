@@ -59,7 +59,7 @@ export default async function PageComponent() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold">📋 Posts</h1>
+      <h1 className="text-3xl font-bold">📵 TIL</h1>
       <div className="italic text-zinc-500 mb-4 mt-6 flex flex-row justify-between text-lg">
         <p>
           Subscribe to{" "}
