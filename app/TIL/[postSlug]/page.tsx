@@ -92,18 +92,22 @@ export default async function Post({ params }: PostParams) {
               {Array.isArray(post.tags) ? (
                 post.tags.map((tag, index) => (
                   <li
-                    key={index} // Using index as key if tag doesn't have an id
+                    key={index}
                     className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
                   >
-                    {tag.name}
+                    <a href={`/tags/${tag.name}`} className="hover:underline">
+                      #{tag.name}
+                    </a>
                   </li>
                 ))
               ) : (
-                <li
-                  key={post.tags.name}
-                  className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
-                >
-                  {post.tags.name}
+                <li className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg">
+                  <a
+                    href={`/tags/${post.tags.name}`}
+                    className="hover:underline"
+                  >
+                    #{post.tags.name}
+                  </a>
                 </li>
               )}
             </ul>
