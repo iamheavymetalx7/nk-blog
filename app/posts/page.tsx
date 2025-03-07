@@ -34,18 +34,15 @@ async function fetchPosts() {
         host: "nov1ce.hashnode.dev",
       },
     });
-    console.log("Retrieved posts:", publication.posts.edges);
 
-    // Filter posts to include only those with at least one tag as "TIL"
-    const filteredPosts = publication.posts.edges
+    // Filter posts to exclude those with the "TIL" tag
+    return publication.posts.edges
       .map(({ node }: { node: Post }) => node)
       .filter(
         (post: any) =>
-          Array.isArray(post.tags) &&
-          post.tags.some((tag: any) => tag.name === "TIL")
+          !Array.isArray(post.tags) ||
+          !post.tags.some((tag: any) => tag.name === "TIL")
       );
-    console.log(filteredPosts);
-    return filteredPosts;
   } catch (error) {
     console.error("Error fetching posts:", error);
     return [];
@@ -53,9 +50,7 @@ async function fetchPosts() {
 }
 
 export default async function PageComponent() {
-  // Fetch posts dynamically on each request
   const posts = await fetchPosts();
-  console.log(posts);
 
   return (
     <>
@@ -73,7 +68,7 @@ export default async function PageComponent() {
         <div className="text-lg">
           <ul>
             {posts.length === 0 ? (
-              <li>No posts with the "TIL" tag found.</li>
+              <li>No posts found.</li>
             ) : (
               posts.map((post: any) => (
                 <li key={post.id}>
@@ -116,13 +111,11 @@ export default async function PageComponent() {
 //     // Filter out null entries and extract posts
 //     const posts = Object.values(data).filter((post) => post !== null);
 
-//     // console.log(posts);
-
-//     // Filter posts to include only those with the "TIL" tag
+//     // Filter posts to exclude those with the "TIL" tag
 //     return posts.filter(
 //       (post: any) =>
-//         Array.isArray(post.tags) &&
-//         post.tags.some((tag: any) => tag.name === "TIL")
+//         !Array.isArray(post.tags) ||
+//         !post.tags.some((tag: any) => tag.name === "TIL")
 //     );
 //   } catch (error) {
 //     console.error("Error fetching posts:", error);
@@ -149,7 +142,7 @@ export default async function PageComponent() {
 //         <div className="text-lg">
 //           <ul>
 //             {posts.length === 0 ? (
-//               <li>No posts with the "TIL" tag found.</li>
+//               <li>No posts found.</li>
 //             ) : (
 //               posts.map((post: any) => (
 //                 <li key={post.id}>
