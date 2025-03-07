@@ -5,10 +5,12 @@ import { FaBookOpen } from "react-icons/fa";
 import Link from "next/link";
 import DashedComponent from "@/components/DashedComponent";
 import beautifyHtml from "@/lib/convertHTML";
+import Image from "next/image";
 
 interface PostParams {
   params: { postSlug: string };
 }
+
 export default async function Post({ params }: PostParams) {
   try {
     const {
@@ -20,17 +22,9 @@ export default async function Post({ params }: PostParams) {
             post(slug: $slug) {
               author {
                 name
-                profilePicture
-                socialMediaLinks {
-                  twitter
-                }
               }
               content {
-                markdown
                 html
-              }
-              coverImage {
-                url
               }
               tags {
                 name
@@ -52,7 +46,7 @@ export default async function Post({ params }: PostParams) {
 
     const post = publication?.post as Post;
 
-    // Convert Markdown content to HTML if needed
+    // Convert HTML content using beautifyHtml
     const htmlContent = await beautifyHtml(post.content.html);
 
     return (
@@ -92,17 +86,14 @@ export default async function Post({ params }: PostParams) {
               {Array.isArray(post.tags) ? (
                 post.tags.map((tag, index) => (
                   <li
-                    key={index} // Using index as key if tag doesn't have an id
+                    key={index}
                     className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
                   >
                     {tag.name}
                   </li>
                 ))
               ) : (
-                <li
-                  key={post.tags.name}
-                  className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
-                >
+                <li className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg">
                   {post.tags.name}
                 </li>
               )}
