@@ -83,18 +83,26 @@ export default async function Post({ params }: PostParams) {
 
           <div className="mt-6 items-center">
             <ul className="flex flex-wrap gap-2 mt-2 items-center">
+              Tags :
               {Array.isArray(post.tags) ? (
                 post.tags.map((tag, index) => (
                   <li
                     key={index}
                     className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg"
                   >
-                    {tag.name}
+                    <a href={`/tags/${tag.name}`} className="hover:underline">
+                      #{tag.name}
+                    </a>
                   </li>
                 ))
               ) : (
                 <li className="bg-blue-200 text-blue-900 px-3 py-1 rounded-lg">
-                  {post.tags.name}
+                  <a
+                    href={`/tags/${post.tags.name}`}
+                    className="hover:underline"
+                  >
+                    #{post.tags.name}
+                  </a>
                 </li>
               )}
             </ul>
